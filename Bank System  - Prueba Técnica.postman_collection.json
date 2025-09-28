@@ -1,0 +1,455 @@
+{
+	"info": {
+		"_postman_id": "45ad66f5-4f16-443d-98cb-bd2041f62fbf",
+		"name": "Bank System  - Prueba Técnica",
+		"description": "Colección con datos de ejemplo (usuarios, cuentas y movimientos) para validar los microservicios de clientes y cuentas.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "9237699",
+		"_collection_link": "https://pragma-6530.postman.co/workspace/CREDI-YA~14cfcbb7-8a08-4f0a-8279-9d2aeb438658/collection/9237699-45ad66f5-4f16-443d-98cb-bd2041f62fbf?action=share&source=collection_link&creator=9237699"
+	},
+	"item": [
+		{
+			"name": "Clientes Service",
+			"item": [
+				{
+					"name": "Crear Cliente - Jose Lema",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Jose Lema\",\n  \"genero\": \"Masculino\",\n  \"edad\": 30,\n  \"identificacion\": \"1001\",\n  \"direccion\": \"Otavalo sn y principal\",\n  \"telefono\": \"0982547855\",\n  \"clienteId\": \"jose01\",\n  \"email\": \"jose@mail.com\",\n  \"contrasena\": \"1234\"\n}"
+						},
+						"url": "http://localhost:8081/api/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Cliente - Marianela Montalvo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Marianela Montalvo\",\n  \"genero\": \"Femenino\",\n  \"edad\": 19,\n  \"identificacion\": \"1002\",\n  \"direccion\": \"Amazonas y NNUU\",\n  \"telefono\": \"0975489655\",\n  \"clienteId\": \"marianela01\",\n  \"email\": \"marianela@mail.com\",\n  \"contrasena\": \"5678\"\n}"
+						},
+						"url": "http://localhost:8081/api/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Cliente - Juan Osorio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Juan Osorio\",\n  \"genero\": \"Masculino\",\n  \"edad\": 32,\n  \"identificacion\": \"1003\",\n  \"direccion\": \"13 junio y Equinoccial\",\n  \"telefono\": \"0988745847\",\n  \"clienteId\": \"juan01\",\n  \"email\": \"juan@mail.com\",\n  \"contrasena\": \"1245\"\n}"
+						},
+						"url": "http://localhost:8081/api/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Clientes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlMkBtYWlsLmNvbSIsImlhdCI6MTc1ODk4NDE4MSwiZXhwIjoxNzU4OTg3NzgxfQ.byuJz_RDhbqZYOEe1nwxdXIEIVkj5I3PcmP1Vnrf8mA"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": "http://localhost:8081/api/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Cliente por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": "http://localhost:8081/api/clientes/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Cliente (PUT)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Jose Lema Updated\",\n  \"genero\": \"Masculino\",\n  \"edad\": 31,\n  \"identificacion\": \"1001\",\n  \"direccion\": \"Otavalo sn y principal\",\n  \"telefono\": \"098254785\",\n  \"clienteId\": \"jose01\",\n  \"email\": \"jose@mail.com\",\n  \"contrasena\": \"1234\",\n  \"estado\": true\n}"
+						},
+						"url": "http://localhost:8081/api/clientes/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Cliente (PATCH)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"direccion\": \"Nueva dirección\",\n  \"telefono\": \"0989999999\"\n}"
+						},
+						"url": "http://localhost:8081/api/clientes/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": "http://localhost:8081/api/clientes/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuentas Service",
+			"item": [
+				{
+					"name": "Crear Cuenta - Jose Lema (478758 Ahorros 2000)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlMkBtYWlsLmNvbSIsImlhdCI6MTc1ODk4NDE4MSwiZXhwIjoxNzU4OTg3NzgxfQ.byuJz_RDhbqZYOEe1nwxdXIEIVkj5I3PcmP1Vnrf8mA"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numeroCuenta\": \"4787584\",\n  \"tipoCuenta\": \"Ahorros\",\n  \"saldoInicial\": 0,\n  \"estado\": true,\n  \"clienteId\": \"1\"\n}"
+						},
+						"url": "http://localhost:8082/api/cuentas"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Cuenta - Marianela Montalvo (225487 Corriente 100)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numeroCuenta\": \"225487\",\n  \"tipoCuenta\": \"Corriente\",\n  \"saldoInicial\": 100,\n  \"estado\": true,\n  \"clienteId\": \"4\"\n}"
+						},
+						"url": "http://localhost:8082/api/cuentas"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Cuenta - Juan Osorio (495878 Ahorros 0)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numeroCuenta\": \"495878\",\n  \"tipoCuenta\": \"Ahorros\",\n  \"saldoInicial\": 0,\n  \"estado\": true,\n  \"clienteId\": \"5\"\n}"
+						},
+						"url": "http://localhost:8082/api/cuentas"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Cuenta - Marianela Montalvo (496825 Ahorros 540)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numeroCuenta\": \"496825\",\n  \"tipoCuenta\": \"Ahorros\",\n  \"saldoInicial\": 540,\n  \"estado\": true,\n  \"clienteId\": \"2\"\n}"
+						},
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Nueva Cuenta Corriente - Jose Lema (585545 Corriente 1000)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numeroCuenta\": \"585545\",\n  \"tipoCuenta\": \"Corriente\",\n  \"saldoInicial\": 1000,\n  \"estado\": true,\n  \"clienteId\": \"1\"\n}"
+						},
+						"url": "http://localhost:8082/api/cuentas"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movimientos Service",
+			"item": [
+				{
+					"name": "Movimiento - Jose Lema (Retiro 575 en 478758)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipoMovimiento\": \"Retiro\",\n  \"valor\": 100\n}"
+						},
+						"url": "http://localhost:8082/api/movimientos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Movimiento - Marianela Montalvo (Depósito 600 en 225487)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipoMovimiento\": \"Depósito\",\n  \"valor\": 600\n}"
+						},
+						"url": "http://localhost:8082/api/movimientos/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Movimiento - Juan Osorio (Depósito 150 en 495878)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipoMovimiento\": \"Depósito\",\n  \"valor\": 150\n}"
+						},
+						"url": "http://localhost:8082/api/movimientos/5"
+					},
+					"response": []
+				},
+				{
+					"name": "Movimiento - Marianela Montalvo (Retiro 540 en 496825)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipoMovimiento\": \"Retiro\",\n  \"valor\": 540\n}"
+						},
+						"url": "http://localhost:8082/api/movimientos/4"
+					},
+					"response": []
+				},
+				{
+					"name": "listar todos los movimientos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/api/movimientos"
+					},
+					"response": []
+				},
+				{
+					"name": "reporte",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlMkBtYWlsLmNvbSIsImlhdCI6MTc1ODk4NTM5OCwiZXhwIjoxNzU4OTg4OTk4fQ.15MnVHbL27yQdLF4LwMAtPtfyHUG3SHbFNZmY27Iu3M"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/reportes?clienteId=1&fechaInicio=2025-01-01&fechaFin=2025-12-31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "clienteId",
+									"value": "1"
+								},
+								{
+									"key": "fechaInicio",
+									"value": "2025-01-01"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2025-12-31"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reportes",
+			"item": [
+				{
+					"name": "Reporte Estado de Cuenta - Marianela Montalvo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/reportes?fechaInicio=2022-02-08&fechaFin=2022-02-10&clienteId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2022-02-08"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2022-02-10"
+								},
+								{
+									"key": "clienteId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login (obtener JWT)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"jose2@mail.com\",\n  \"contrasena\": \"1234\"\n}"
+						},
+						"url": "http://localhost:8081/api/auth/login"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

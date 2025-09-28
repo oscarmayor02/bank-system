@@ -25,8 +25,6 @@ Ambos servicios están desacoplados, se comunican mediante **Feign Client**, y u
 
 ## 🏗️ Arquitectura
 
-lua
-Copiar código
 +-------------------+
 |   Cliente Service |
 |  (Puerto 8081)    |
@@ -132,28 +130,28 @@ mvn clean package -DskipTests
 cd ../cuentas-service
 mvn clean package -DskipTests
 cd ..
-2. Levantar con Docker Compose
+# 2. Levantar con Docker Compose
 bash
 Copiar código
 docker compose up --build
-3. Verificar servicios
-bash
-Copiar código
-docker ps
-Deberías ver:
+# 3. Verificar servicios
+## bash
+## Copiar código
+### docker ps
+## Deberías ver:
 
-clientes-service en 8081
+### clientes-service en 8081
 
-cuentas-service en 8082
+## cuentas-service en 8082
 
-banco-db en 5432
+### banco-db en 5432
 
-📦 Ejemplo de flujo completo en Postman
-1️⃣ Registrar cliente (sin token)
+# 📦 Ejemplo de flujo completo en Postman
+## 1️⃣ Registrar cliente (sin token)
 
-http
-Copiar código
-POST http://localhost:8081/api/clientes
+### http
+### Copiar código
+# POST http://localhost:8081/api/clientes
 {
   "nombre": "Jose Lema",
   "edad": 25,
@@ -161,20 +159,20 @@ POST http://localhost:8081/api/clientes
   "contrasena": "1234",
   "telefono": "098254785"
 }
-2️⃣ Login (obtener JWT)
+### 2️⃣ Login (obtener JWT)
 
-http
-Copiar código
-POST http://localhost:8081/api/auth/login
+### http
+### Copiar código
+# POST http://localhost:8081/api/auth/login
 {
   "email": "jose@test.com",
   "contrasena": "1234"
 }
-3️⃣ Crear cuenta (requiere token)
+### 3️⃣ Crear cuenta (requiere token)
 
-http
-Copiar código
-POST http://localhost:8082/api/cuentas
+### http
+### Copiar código
+# POST http://localhost:8082/api/cuentas
 Authorization: Bearer <TOKEN>
 {
   "numeroCuenta": "225487",
